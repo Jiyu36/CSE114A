@@ -30,7 +30,7 @@ let SND   = \p     -> p FALSE
 -- do not modify text BEFORE this line
 --------------------------------------------------------------------------------
 
-let SKIP1 = \f p -> PAIR (OR (FST p) TRUE) (ITE (FST p) (f (SND p)) (SND p))       -- (a)
+let SKIP1 = \f p -> PAIR (TRUE) (ITE (FST p) (f (SND p)) (SND p))       -- (a)
 let DECR  = \n -> SND (n (SKIP1 INCR) (PAIR FALSE ZERO))       -- (b)
 let SUB   = \x y -> y DECR x       -- (c)
 let ISZ   = \x -> (x (\y -> FALSE) TRUE)       -- (d)
