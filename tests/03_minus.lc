@@ -34,7 +34,7 @@ let SKIP1 = \f p -> PAIR TRUE (ITE (FST p) (f (SND p)) (SND p))       -- (a)
 let DECR  = \n -> SND (n (SKIP1 INCR) (PAIR FALSE ZERO))       -- (b)
 let SUB   = \x y -> y DECR x       -- (c)
 let ISZ   = \x -> (x (\y -> FALSE) TRUE)       -- (d)
-let EQL   = \x y -> AND (ISZ (SUB x y) ISZ (SUB y x))       -- (e)
+let EQL   = \x y -> ITE (ISZ (SUB x y))(ITE (ISZ (SUB y x)) TRUE FALSE)FALSE       -- (e)
 
 --------------------------------------------------------------------------------
 -- do not modify text AFTER this line
